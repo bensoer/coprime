@@ -30,6 +30,6 @@ task mainJar(type: Jar, dependsOn: classes) {
         exclude "META-INF/*.RSA"
     }
     manifest {
-        attributes 'Main-Class': "coprimeKt"
+        attributes 'Main-Class': "CoprimeKt"
     }
 }

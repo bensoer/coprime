@@ -21,26 +21,15 @@ repositories {
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
-group 'com.bensoer'
-version '1.0.0'
 
-buildscript {
-    ext.kotlin_version = '1.0.5'
-
-    repositories {
-        mavenCentral()
+task mainJar(type: Jar, dependsOn: classes) {
+    from sourceSets.main.output
+    from {configurations.runtime.collect {zipTree(it)}} {
+        exclude "META-INF/*.SF"
+        exclude "META-INF/*.DSA"
+        exclude "META-INF/*.RSA"
     }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    manifest {
+        attributes 'Main-Class': "coprimeKt"
     }
-}
-
-apply plugin: 'kotlin'
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }

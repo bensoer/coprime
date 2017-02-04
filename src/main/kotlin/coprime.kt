@@ -1,6 +1,7 @@
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.LinkedBlockingQueue
+import kotlin.concurrent.thread
 
 val threadPoolSize = 5
 val executor: ExecutorService = Executors.newFixedThreadPool(threadPoolSize)
@@ -26,7 +27,10 @@ fun printHelp(){
 fun generatePrimeNumbers(){
 
     val blockingQueue = LinkedBlockingQueue<Long>()
-    val future = executor.submit(PrimeNumberGenerator(blockingQueue))
+
+    for(i in 1..threadPoolSize){
+        executor.submit(PrimeNumberGenerator(blockingQueue))
+    }
 
     while(true){
         val primeNumber = blockingQueue.take()
@@ -38,6 +42,7 @@ fun generateCoPrimeNumbers() {
 
     val coprimeExecutor: ExecutorService = Executors.newFixedThreadPool(threadPoolSize)
     val blockingQueue = LinkedBlockingQueue<Pair<Long, Long>>()
+
     val future = executor.submit(CoPrimeNumberGenerator(coprimeExecutor, blockingQueue))
 
     while (true){

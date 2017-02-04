@@ -1,3 +1,4 @@
+import java.util.*
 import java.util.concurrent.locks.ReentrantLock
 
 /**
@@ -5,15 +6,18 @@ import java.util.concurrent.locks.ReentrantLock
  */
 object NextNumberGenerator {
 
-    private var number:Long = 2
+    private var number:Long = 1 // start here since auto increment is by 2
     private val lock = ReentrantLock()
 
+
+    private val previousPrimesLock = ReentrantLock()
+    private val previousPrimes = ArrayList<Long>()
 
     fun getNextNumber():Long{
         lock.lock()
 
         //increment to get the next number
-        number++
+        number += 2 // go by two cuz even numbers will never be primes
 
         //then fetch a copy
         val copy = number
@@ -24,4 +28,20 @@ object NextNumberGenerator {
         //return
         return copy
     }
+
+    fun addPrime(prime:Long){
+        previousPrimesLock.lock()
+        previousPrimes.add(prime)
+        previousPrimes.sort()
+        previousPrimesLock.unlock()
+    }
+
+    fun getPreviousPrimesUpToRoot(root:Long):ArrayList<Long>{
+        previousPrimesLock.lock()
+        val copy = ArrayList<Long>(previousPrimes.filter{ it <= root}.sorted())
+        previousPrimesLock.unlock()
+        return copy
+    }
+
+
 }

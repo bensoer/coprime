@@ -11,20 +11,31 @@ class PrimeNumberGenerator(private val blockingQueue: BlockingQueue<Long>) : Run
 
             outer@ while(true){
 
+                //get the number
                 val number = NextNumberGenerator.getNextNumber()
+                //find its square root, cast to int value
+                val root = Math.round(Math.sqrt(number.toDouble()))
+                //get a copy of all primes found thus far
+                val previousPrimes = NextNumberGenerator.getPreviousPrimesUpToRoot(root)
 
-                for(i in 2..(number-1)){
-                    if(number % i == 0.toLong()){
-                        //this is not a prime number
-                        continue@outer
+                val iterator = previousPrimes.iterator()
+                while(iterator.hasNext()){
+                    val next = iterator.next()
+                    if(next <= root){
+
+                        if(number % next == 0.toLong()){
+                            continue@outer
+                        }
+
                     }
                 }
+
                 //this number is a prime!
                 blockingQueue.add(number)
+                NextNumberGenerator.addPrime(number)
             }
         }catch(ie: InterruptedException){
             println("PrimeNumberGenerator: Terminating")
         }
     }
-
 }

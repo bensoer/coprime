@@ -11,12 +11,14 @@ class PrimeNumberGenerator(private val blockingQueue: BlockingQueue<Long>) : Run
 
             outer@ while(true){
 
+                //FIXME: Reduce the amount of locks needed to start
+
                 //get the number
-                val number = NextNumberGenerator.getNextNumber()
+                val number = NextNumberGenerator.getNextNumber() // lock 1
                 //find its square root, cast to int value
                 val root = Math.round(Math.sqrt(number.toDouble()))
                 //get a copy of all primes found thus far
-                val previousPrimes = NextNumberGenerator.getPreviousPrimesUpToRoot(root)
+                val previousPrimes = NextNumberGenerator.getPreviousPrimesUpToRoot(root) // lock 2
 
                 val iterator = previousPrimes.iterator()
                 while(iterator.hasNext()){

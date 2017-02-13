@@ -18,14 +18,16 @@ class PrimeNumberGenerator(private val blockingQueue: BlockingQueue<Long>) : Run
                 //find its square root, cast to int value
                 val root = Math.round(Math.sqrt(number.toDouble()))
                 //get a copy of all primes found thus far
-                val previousPrimes = NextNumberGenerator.getPreviousPrimesUpToRoot(root) // lock 2
+                var previousPrimes = NextNumberGenerator.getPreviousPrimesUpToRoot(root) // lock 2
 
+
+                var prime:Long? = null
                 val iterator = previousPrimes.iterator()
                 while(iterator.hasNext()){
-                    val next = iterator.next()
-                    if(next <= root){
+                    prime = iterator.next()
+                    if(prime <= root){
 
-                        if(number % next == 0.toLong()){
+                        if(number % prime == 0.toLong()){
                             continue@outer
                         }
 

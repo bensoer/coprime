@@ -5,5 +5,7 @@ enum class ModeEnum {
     TESTPRIME,
     TESTCOPRIME,
     GENPRIME,
-    GENCOPRIME
+    GENCOPRIME,
+    GENCOPRIMEPRIME,
+    PRIMEFACT //prime factorization of a number
 }

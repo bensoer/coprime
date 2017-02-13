@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/coprime.iml" filepath="$PROJECT_DIR$/.idea/modules/coprime.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/coprime_main.iml" filepath="$PROJECT_DIR$/.idea/modules/coprime_main.iml" group="coprime" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/coprime_test.iml" filepath="$PROJECT_DIR$/.idea/modules/coprime_test.iml" group="coprime" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cryptools.iml" filepath="$PROJECT_DIR$/.idea/modules/cryptools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cryptools_main.iml" filepath="$PROJECT_DIR$/.idea/modules/cryptools_main.iml" group="cryptools" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cryptools_test.iml" filepath="$PROJECT_DIR$/.idea/modules/cryptools_test.iml" group="cryptools" />
     </modules>
   </component>
 </project>

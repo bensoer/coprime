@@ -4,6 +4,8 @@
     <bytecodeTargetLevel>
       <module name="coprime_main" target="1.8" />
       <module name="coprime_test" target="1.8" />
+      <module name="cryptools_main" target="1.8" />
+      <module name="cryptools_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

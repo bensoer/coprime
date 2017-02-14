@@ -7,5 +7,8 @@ enum class ModeEnum {
     GENPRIME,
     GENCOPRIME,
     GENCOPRIMEPRIME,
+    GENPUBKEY,
+    GENPRIVKEY,
+    PRIVKEYCRACK,
     PRIMEFACT //prime factorization of a number
 }

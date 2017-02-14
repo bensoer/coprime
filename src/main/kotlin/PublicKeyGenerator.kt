@@ -22,6 +22,9 @@ class PublicKeyGenerator(firstPrimeNumber:Long, secondPrimeNumber:Long) {
         }else{
             e = CoPrimeNumberGenerator.findCoPrimeToTotient(totient, secondPrimeNumber)
         }
+
+        //calculate d value
+        //println(EuclideanGCDGenerator.findExtendedGCD(totient, e!!))
     }
 
 

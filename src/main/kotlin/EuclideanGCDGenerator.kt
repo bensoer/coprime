@@ -21,7 +21,7 @@ class EuclideanGCDGenerator(private val numberA:Long, private val numberB:Long) 
             return numberA
         }
 
-        val numberAQuotient = numberA / numberB
+        //val numberAQuotient = numberA / numberB
         val numberARemainder = numberA % numberB
 
         //A = B*Q + R
@@ -33,18 +33,19 @@ class EuclideanGCDGenerator(private val numberA:Long, private val numberB:Long) 
     }
 
 
-    //python version
-    data class Results(val gcd:Float, val x:Float, val y:Float)
-    private fun findExtendedGCD(numberA:Float, numberB:Float):Results{
+    companion object{
+        //python version
+        data class Results(val gcd:Long, val x:Long, val y:Long)
+        fun findExtendedGCD(numberA:Long, numberB:Long):Results{
 
-        if(numberA == 0.toFloat()){
-            return Results(numberB, 0.toFloat(), 1.toFloat())
-        }else{
+            if(numberA == 0.toLong()){
+                return Results(numberB, 0.toLong(), 1.toLong())
+            }else{
 
-            val results = findExtendedGCD(numberB % numberA, numberA)
-            return Results(results.gcd, results.y - (numberB / numberA) * results.x, results.x)
+                val results = findExtendedGCD(numberB % numberA, numberA)
+                return Results(results.gcd, results.y - (numberB / numberA) * results.x, results.x)
+            }
         }
     }
-
 
 }

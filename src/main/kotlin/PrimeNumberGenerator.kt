@@ -21,7 +21,7 @@ class PrimeNumberGenerator(private val blockingQueue: BlockingQueue<Long>) : Run
                 var previousPrimes = NextNumberGenerator.getPreviousPrimesUpToRoot(root) // lock 2
 
 
-                var prime:Long? = null
+                var prime:Long?
                 val iterator = previousPrimes.iterator()
                 while(iterator.hasNext()){
                     prime = iterator.next()

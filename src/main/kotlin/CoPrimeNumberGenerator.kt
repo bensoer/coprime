@@ -93,7 +93,7 @@ class CoPrimeNumberGenerator(private val executor:ExecutorService, private val b
         fun findCoPrimeToTotient(totient:Long, startValue:Long):Long?{
 
             //count up from the start value to 1 before the totient to find a coprime
-            for(i in startValue..(totient-1)){
+            for(i in startValue+1..(totient-1)){
 
                 if(CoPrimeTester(i, totient).call()){
                     return i
